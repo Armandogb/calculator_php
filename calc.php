@@ -18,7 +18,10 @@
 			
 			if($new_ar[0] == "-"){
 				array_push($arr_test, $new_ar[0]);
-				$new_ar[0] = "";
+				$new_ar[0] = " ";
+			}
+			elseif($new_ar[$p] == "-" && is_string(end($results))){
+				array_push($arr_test, $new_ar[$p]);
 			}
 			elseif(in_array($new_ar[$p], $int_range)){
 				
@@ -117,8 +120,6 @@
 		$arrr = array_values($arrr);
 		return $arrr;
 	}
-
-
 
 
 	function mulDiv($arrr){
