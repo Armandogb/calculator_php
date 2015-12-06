@@ -7,12 +7,12 @@
 	$new_a = str_split($test);
 
 
-
 	function strFilter($new_ar){
 
+		$int_range = ["0","1","2","3","4","5","6","7","8","9","."];
 		$results = [];
 		$arr_test = [];
-		$int_range = ["0","1","2","3","4","5","6","7","8","9","."];
+		
 
 		for($p = 0;$p < count($new_ar); $p++){
 			
@@ -30,16 +30,21 @@
 
 			}
 			elseif(is_string($new_ar[$p])){	
-				array_push($results, numConv($arr_test));
+				
+				if(!empty($arr_test)){
+					array_push($results, numConv($arr_test));
+					$arr_test=[];
+				}
 				array_push($results, $new_ar[$p]);
 
-					$arr_test=[];
 			}
 
 		}
 		return $results;
 
 	}
+
+		print_r(strFilter($new_a));
 
 	function numConv($arr){
 		$n = in_array(".", $arr) ? floatval(implode("",$arr)) : intval(implode("",$arr));
@@ -74,36 +79,43 @@
 
 			for($x = 0;$x < count($arrr); $x++){
 
-				if($arrr[$x] == ")"){
+				if($arrr[$x] == "("){
 
-					$arrr[$x] = calcUp(runIt(cleanPar($par_ar)));
-					$arrr = array_filter($arrr);
-					$arrr = array_values($arrr);
-					return orderPar($arrr);
-				}
-				else{
-					array_push($par_ar, $arrr[$x]);
-					$arrr[$x]=" ";
+					$arrr[$x] = " ";
+
+					for($i = $x+1;$i < count($arrr);$i++){
+
+						if($arrr[$i] == ")"){
+							$arrr[$i] = calcUp(runIt($par_ar));
+							$arrr = cleanPar($arrr);
+							return orderPar($arrr);
+
+						}else{
+							array_push($par_ar, $arrr[$i]);
+							$arrr[$i] = " ";
+							print_r($par_ar);
+						}
+
+					}
+
 				}
 
 			}
-			
-			return $arrr;
-
+		$arrr = cleanPar($arrr);
+		return $arrr;
 	}
 
 	function cleanPar($arrr){
 
-		$clean = [];
-
 		for($x = 0;$x<count($arrr);$x++){
 			
-			if($arrr[$x] != "(" or $arrr[$x] != ")"){
-				array_push($clean, $arrr[$x]);
+			if($arrr[$x] == " "){
+				unset($arrr[$x]);
 			}
-		};
+		}
 
-		return $clean;
+		$arrr = array_values($arrr);
+		return $arrr;
 	}
 
 
@@ -195,8 +207,8 @@
 		return $uuu;
 	}
 
-	
-	$answer = calcUp(runIt(strFilter($new_a))); 
+	$answer = calcUp(runIt(orderPar(strFilter($new_a)))); 
+
 
 	header("Location: /?answer=$answer")
 
