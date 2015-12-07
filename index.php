@@ -32,9 +32,11 @@
 				</div>
 				<div class="but4">
 				</div>
-				<div class="but5">
+				<div class="but5 click" href="(">
+					<p>(</p>
 				</div>
-				<div class="but6">
+				<div class="but6 click" href=")">
+					<p>)</p>
 				</div>
 			</div>
 			<div class="row2 buts">
@@ -49,10 +51,11 @@
 				<div class="but5 click" href="/">
 				</div>
 				<div class="but6 click" href="^">
+					<p>^</p>
 				</div>
 			</div>
 			<div class="row3 buts">
-				<div class="but1">
+				<div class="but1 click" href="-">
 				</div>
 				<div class="but2 click" href="4">
 				</div>
@@ -66,17 +69,13 @@
 				</div>
 			</div>
 			<div class="row4 buts">
-				<div class="but1">
+				<div class="but1 delete">
 				</div>
 				<div class="but2 click" href="1">
 				</div>
 				<div class="but3 click" href="2">
 				</div>
 				<div class="but4 click" href="3">
-				</div>
-				<div class="but5 click" href="+">
-				</div>
-				<div class="but6 submit">
 				</div>
 			</div>
 			<div class="row5 buts">

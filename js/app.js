@@ -21,4 +21,9 @@ $(document).ready(function(){
 		numbs = [];
 	});
 
+	$(".delete").on("click",function(){
+		numbs.splice(-1,1);
+		changeText();
+	});
+
 });

@@ -36,7 +36,7 @@ html{
 }
 
 .buts div{
-	width:12%;
+	width:10%;
 	position: absolute;
 }
 .screen{
@@ -54,56 +54,76 @@ html{
 
 
 .row1{
-	margin-top: 29%;
+	margin-top: 30%;
 }
 
 .row2{
-	margin-top: 41%;
+	margin-top: 42%;
 }
 
 .row3{
-	margin-top: 53%;
+	margin-top: 54%;
 }
 
 .row4{
-	margin-top: 67%;
+	margin-top: 66%;
 }
 
 .row5{
-	margin-top: 77%;
+	margin-top: 78%;
 }
 
 .but1{
-	margin-left: 24px;
+	margin-left: 31px;
 	height:100%;
 }
 
 .but2{
-	margin-left: 98px;
+	margin-left: 106px;
 	height:100%;
 }
 
 .but3{
-	margin-left: 157px;
+	margin-left: 163px;
 	height:100%;
 }
 
 .but4{
-	margin-left: 215px;
+	margin-left: 221px;
 	height:100%;
 }
 
 .but5{
-	margin-left: 288px;
+	margin-left: 294px;
 	height:100%;
 }
 
 .but6{
-	margin-left: 348px;
+	margin-left: 353px;
 	height:100%;
 }
 
+.row5 .but5, .row5 .but6{
+	height: 207%;
+    bottom: 0px;
+}
 
 
+.row1 .but5,.row1 .but6,.row2 .but6{
+	background-color: #6D6E71;
+	color: white;
+	text-align: center;
+	font-style: bold;
+	font-size: 24px;
+}
+
+.row1 .but5 p,.row1 .but6 p,.row2 .but6 p{
+	bottom: 22px;
+    position: relative;
+}
+
+.row5 .but1{
+	width:14%;
+}
 
 
