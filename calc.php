@@ -3,6 +3,8 @@
 	$main = $_GET['digits'];
 	$test = str_replace(' ', '', $main);
 	$new_a = str_split($test);
+	$err = NULL;
+	$answer = NULL;
 
 
 	function strFilter($new_ar){
@@ -14,8 +16,12 @@
 		
 
 		for($p = 0;$p < count($new_ar); $p++){
-			
-			if($new_ar[0] == "-"){
+
+			if(!in_array($new_ar[$p], $int_range) && !in_array($new_ar[$p], $oper_range)){
+
+				return $err = "Invalid_Character";
+			}
+			elseif($new_ar[0] == "-"){
 				array_push($arr_test, $new_ar[0]);
 				$new_ar[0] = " ";
 			}
@@ -44,11 +50,20 @@
 			}
 
 		}
+
+
 		return $results;
 
 	}
 
 
+	function sizeCheck($arrr){
+		for($x = 0; $x < count($arrr); $x++){
+			if($arrr[$x] > 1000000 || $arrr[$x] < -1000000){
+				return $err = "Invalid_Number";
+			}
+		}
+	}
 
 	function numConv($arr){
 		$n = in_array(".", $arr) ? floatval(implode("",$arr)) : intval(implode("",$arr));
@@ -213,11 +228,27 @@
 		return $uuu;
 	}
 
-	print_r(strFilter($new_a));
-
-	$answer = calcUp(runIt(orderPar(strFilter($new_a)))); 
 
 
-	//header("Location: /?answer=$answer")
+	$math_array = strFilter($new_a);
 
-?>
+
+	function setAns($error){
+
+		sizeCheck($math_array);
+
+		if(is_null($error)){
+
+			$answer = calcUp(runIt(orderPar($math_array))); 
+		}else{
+			$answer = $error;
+		}
+
+	}
+
+
+	setAns($err);
+
+	header("Location: /?answer=$answer");
+
+?>	
