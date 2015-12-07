@@ -1,7 +1,5 @@
 <?php
 
-
-
 	$main = $_GET['digits'];
 	$test = str_replace(' ', '', $main);
 	$new_a = str_split($test);
@@ -47,12 +45,13 @@
 
 	}
 
-		print_r(strFilter($new_a));
+
 
 	function numConv($arr){
 		$n = in_array(".", $arr) ? floatval(implode("",$arr)) : intval(implode("",$arr));
 		return $n;
 	}
+
 
 	function calcLogic($a,$mode,$b){
 		
@@ -76,6 +75,7 @@
 
 	}
 
+
 	function orderPar($arrr){
 
 		$par_ar = [];
@@ -96,7 +96,6 @@
 						}else{
 							array_push($par_ar, $arrr[$i]);
 							$arrr[$i] = " ";
-							print_r($par_ar);
 						}
 
 					}
@@ -107,6 +106,7 @@
 		$arrr = cleanPar($arrr);
 		return $arrr;
 	}
+
 
 	function cleanPar($arrr){
 
