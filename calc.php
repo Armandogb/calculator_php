@@ -233,21 +233,10 @@
 	$math_array = strFilter($new_a);
 
 
-	function setAns($error){
-
-		sizeCheck($math_array);
-
-		if(is_null($error)){
-
-			$answer = calcUp(runIt(orderPar($math_array))); 
-		}else{
-			$answer = $error;
-		}
-
-	}
+	sizeCheck($math_array);
 
 
-	setAns($err);
+	$answer = calcUp(runIt(orderPar($math_array))); 
 
 	header("Location: /?answer=$answer");
 
