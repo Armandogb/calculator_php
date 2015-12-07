@@ -8,6 +8,7 @@
 	function strFilter($new_ar){
 
 		$int_range = ["0","1","2","3","4","5","6","7","8","9","."];
+		$oper_range = ["+","-","^","x","/","(",")"];
 		$results = [];
 		$arr_test = [];
 		
@@ -18,9 +19,11 @@
 				array_push($arr_test, $new_ar[0]);
 				$new_ar[0] = " ";
 			}
-			elseif($new_ar[$p] == "-" && is_string(end($results))){
-				array_push($arr_test, $new_ar[$p]);
-			}
+			//elseif($new_ar[$p] == "-" && in_array($results[count($results) - 1], $oper_range) 
+				//&& in_array($new_ar[$p+1], $int_range)){
+
+				//array_push($arr_test, $new_ar[$p]);
+		//	}
 			elseif(in_array($new_ar[$p], $int_range)){
 				
 				array_push($arr_test, $new_ar[$p]);
@@ -30,7 +33,7 @@
 				}
 
 			}
-			elseif(is_string($new_ar[$p])){	
+			elseif(in_array($new_ar[$p], $oper_range)){	
 				
 				if(!empty($arr_test)){
 					array_push($results, numConv($arr_test));
@@ -96,6 +99,8 @@
 						}else{
 							array_push($par_ar, $arrr[$i]);
 							$arrr[$i] = " ";
+							echo "---";
+							print_r($par_ar);
 						}
 
 					}
@@ -208,9 +213,11 @@
 		return $uuu;
 	}
 
+	print_r(strFilter($new_a));
+
 	$answer = calcUp(runIt(orderPar(strFilter($new_a)))); 
 
 
-	header("Location: /?answer=$answer")
+	//header("Location: /?answer=$answer")
 
 ?>
